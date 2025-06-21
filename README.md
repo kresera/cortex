@@ -1,3 +1,5 @@
+**CORTEX – Cognitive Optimization & Rapid Training Experience**
+
 **Skill Synthesis > Gamified Learning > KRESERA™**
 
 **We are decentralizing knowledge acquisition to a network of interactive experiences.**
