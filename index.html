@@ -1,0 +1,544 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.5">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;The Buffett Challenge&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&amp;family=Source+Sans+3:wght@400;600;700&amp;display=swap" rel="stylesheet"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'Source Sans 3', sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.font-serif {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'Merriweather', serif;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.card {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.card:hover {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transform: translateY(-5px);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.option-btn {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.2s ease;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.option-btn:not(:disabled):hover {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transform: scale(1.03);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #fbbf24; /* amber-400 */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #1f2937;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.correct {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #22c55e !important; /* green-500 */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-color: #16a34a;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.incorrect {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #ef4444 !important; /* red-500 */</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-color: #dc2626;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.slide-in {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>animation: slide-in 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>@keyframes slide-in {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>from {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>opacity: 0;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>transform: translateY(30px) scale(0.98);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>to {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>opacity: 1;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>transform: translateY(0) scale(1);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.fade-in {</p>
+<p class="p1"><span class="Apple-converted-space">             </span>animation: fade-in 0.5s ease-in-out forwards;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>@keyframes fade-in {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>from { opacity: 0; }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>to { opacity: 1; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body class="bg-gray-100 text-gray-800 flex items-center justify-center min-h-screen p-4"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="game-container" class="w-full max-w-4xl mx-auto"&gt;</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="start-screen" class="text-center p-8 bg-white rounded-2xl shadow-2xl border-t-8 border-amber-400"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1 class="font-serif text-5xl mb-4 text-gray-800"&gt;The Buffett Challenge&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="text-gray-600 text-lg mb-6"&gt;Welcome, Apprentice. Your journey to becoming a Master Analyst begins now. &lt;br&gt;Distill the wisdom from Warren Buffett's letters.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="text-gray-500 mb-8"&gt;You will be presented with core concepts and challenged to apply them. Each level unlocks a new layer of thinking. Ready to begin?&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button id="start-game-btn" class="bg-amber-400 text-gray-900 font-bold py-3 px-8 rounded-lg text-xl hover:bg-amber-500 transition-all duration-300 shadow-lg"&gt;Begin Level 1&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="game-screen" class="hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="mb-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 id="level-title" class="font-serif text-3xl text-center text-gray-800"&gt;&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="w-full bg-gray-200 rounded-full h-3 mt-3 shadow-inner"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div id="progress-bar" class="bg-green-500 h-3 rounded-full transition-all duration-500 ease-out"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="content-area" class="bg-white rounded-2xl p-8 shadow-2xl min-h-[550px] flex flex-col justify-between border-t-8 border-amber-400"&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="learn-section" class="flex-grow"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3 id="learn-title" class="text-2xl font-bold font-serif mb-3 text-sky-800"&gt;&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div id="learn-quote" class="bg-gray-50 border-l-4 border-amber-400 p-4 mb-4 text-gray-600 italic"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p id="learn-explanation" class="text-gray-700 mb-4 text-lg"&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="challenge-section" class="hidden flex-grow"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div id="scenario" class="mb-6 bg-gray-50 p-6 rounded-lg border border-gray-200"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h4 class="font-bold text-lg text-sky-800 font-serif mb-3"&gt;Case File:&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div id="scenario-data" class="text-gray-700"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div id="question-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h4 id="question-text" class="text-xl font-semibold mb-4 text-center"&gt;&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div id="options-container" class="grid grid-cols-1 md:grid-cols-2 gap-4"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="feedback-section" class="hidden text-center mt-4 p-4 rounded-lg fade-in"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h4 id="feedback-title" class="font-bold text-xl mb-2"&gt;&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p id="feedback-text" class="text-gray-700"&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="mt-8 text-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button id="next-btn" class="bg-amber-400 text-gray-900 font-bold py-2 px-8 rounded-lg hover:bg-amber-500 transition-colors hidden"&gt;Continue&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="level-complete-screen" class="hidden text-center p-8 bg-white rounded-2xl shadow-2xl border-t-8 border-green-500"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>&lt;h1 id="level-complete-title" class="font-serif text-5xl mb-4 text-green-600"&gt;&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>&lt;p id="level-complete-summary" class="text-gray-600 text-lg mb-6"&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>&lt;p class="text-gray-500 mb-8"&gt;Are you ready for the next set of challenges?&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>&lt;button id="next-level-btn" class="bg-green-500 text-white font-bold py-3 px-8 rounded-lg text-xl hover:bg-green-600 transition-all duration-300 shadow-lg"&gt;&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;script&gt;</p>
+<p class="p1">const gameData = [</p>
+<p class="p1"><span class="Apple-converted-space">    </span>{</p>
+<p class="p1"><span class="Apple-converted-space">        </span>level: 1,</p>
+<p class="p1"><span class="Apple-converted-space">        </span>title: "Level 1: The Manager's Yardstick",</p>
+<p class="p1"><span class="Apple-converted-space">        </span>summary: "You've learned Buffett's foundational metric for judging management: Return on Equity. You now understand why high ROE trumps simple EPS growth and the critical importance of being in a business with 'tailwinds'.",</p>
+<p class="p1"><span class="Apple-converted-space">        </span>concepts: [</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>type: 'learn',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>title: 'The "Stopped Clock" Problem',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>quote: `"...we find nothing particularly noteworthy in a management performance combining, say, a 10% increase in equity capital and a 5% increase in earnings per share. After all, even a totally dormant savings account will produce steadily rising interest earnings..." - 1977 Letter`,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>explanation: `Buffett argues that focusing only on Earnings Per Share (EPS) growth is misleading. A company can grow its EPS just by retaining earnings, without any real improvement in performance. It's a "stopped clock" that looks like it's growing.`</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>type: 'learn',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>title: `The Superior Metric: Return on Equity`,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>quote: `"...we believe a more appropriate measure of managerial economic performance to be return on equity capital." - 1977 Letter`,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>explanation: `Return on Equity (ROE) measures how effectively management uses the capital shareholders have invested. A high ROE means the company is generating high profits from its equity base. Formula: Operating Earnings / Beginning Equity.`</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>type: 'challenge',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>scenario: {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>data: `</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p&gt;You are analyzing two companies:&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="flex justify-around mt-4 text-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;h5 class="font-bold"&gt;Company A&lt;/h5&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;p&gt;Beginning Equity: $100M&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;p&gt;Operating Earnings: $12M&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;p&gt;&lt;strong&gt;ROE: 12%&lt;/strong&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;h5 class="font-bold"&gt;Company B&lt;/h5&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;p&gt;Beginning Equity: $200M&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;p&gt;Operating Earnings: $24M&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;p&gt;&lt;strong&gt;ROE: 12%&lt;/strong&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="mt-4"&gt;In the next year, both companies retain all earnings and earn the same ROE on their new, larger equity base.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="mt-2"&gt;Company A's new earnings will be $13.44M (12% of $112M). EPS grew 12%.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p&gt;Company B's new earnings will be $26.88M (12% of $224M). EPS grew 12%.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="mt-4"&gt;&lt;strong&gt;Now, consider a new company, Company C:&lt;/strong&gt;&lt;br&gt;Beginning Equity: $100M, Operating Earnings: $20M. &lt;strong&gt;ROE: 20%&lt;/strong&gt;&lt;/p&gt;`</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>question: 'Based on Buffett\'s preferred metric, which company demonstrates the best managerial performance?',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>options: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ text: 'Company B, because it has the highest dollar earnings.', correct: false, feedback: 'Incorrect. While its dollar earnings are highest, its *efficiency* in using capital is the same as Company A\'s.' },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ text: 'Company C, because it has the highest Return on Equity (ROE).', correct: true, feedback: 'Correct! Company C is the most efficient at generating profit from the capital it employs. This is the true measure of superior management.' }</p>
+<p class="p1"><span class="Apple-converted-space">                </span>]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>type: 'learn',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>title: 'Headwinds vs. Tailwinds',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>quote: `"...lessons your management has learned...is the importance of being in businesses where tailwinds prevail rather than headwinds." - 1977 Letter`,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>explanation: `A business with "headwinds" (like textiles) has difficult economics, where even great management struggles to produce modest results. A business with "tailwinds" (like insurance, at times) has favorable economics, making it easier to achieve satisfactory results.`</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>type: 'challenge',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>scenario: {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>data: `&lt;p&gt;You have the opportunity to invest in one of two industries:&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                           </span>&lt;p class="mt-2"&gt;&lt;strong&gt;Industry A:&lt;/strong&gt; Highly competitive, produces an undifferentiated product, is capital-intensive, and has excess capacity.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                           </span>&lt;p class="mt-2"&gt;&lt;strong&gt;Industry B:&lt;/strong&gt; Sells a unique, branded product with loyal customers, has low capital needs, and is protected from competition.&lt;/p&gt;`</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>question: 'Which industry is blessed with "tailwinds"?',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>options: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ text: 'Industry A', correct: false, feedback: 'Not quite. The characteristics described for Industry A are classic "headwinds" that make it very difficult to earn good returns on capital.'},</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ text: 'Industry B', correct: true, feedback: 'Exactly. A unique, branded business with low capital needs is a perfect example of a business with strong tailwinds at its back.'}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>]</p>
+<p class="p1"><span class="Apple-converted-space">    </span>},</p>
+<p class="p1"><span class="Apple-converted-space">    </span>{</p>
+<p class="p1"><span class="Apple-converted-space">        </span>level: 2,</p>
+<p class="p1"><span class="Apple-converted-space">        </span>title: "Level 2: The Investor's Mindset",</p>
+<p class="p1"><span class="Apple-converted-space">        </span>summary: "You now grasp Buffett's view on investing. You've learned about 'look-through' earnings, the folly of market timing, and the wisdom of owning a piece of a wonderful business over owning all of a fair one.",</p>
+<p class="p1"><span class="Apple-converted-space">        </span>concepts: [</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>type: 'learn',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>title: `The Flaw of Consolidated Accounting`,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>quote: `"...a grouping of Balance Sheet and Earnings items...tends to obscure economic reality more than illuminate it...it represents a form of presentation that we never prepare for internal use..." - 1978 Letter`,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>explanation: `When a company owns many different businesses, lumping all their numbers together (consolidation) can hide what's really going on. Buffett emphasizes looking at each business segment separately to understand its true economic performance.`</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>type: 'learn',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>title: `Passive Ownership in a Wonderful Business`,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>quote: `"[SAFECO] is a much better insurance operation than our own...Why should we wish to direct it? ...we can obtain a better management result through non-control than control." - 1978 Letter`,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>explanation: `It is often smarter to own a minority stake in a fantastic, well-managed company (passive ownership) than it is to buy 100% control of a mediocre company. The goal is to partner with the best managers, not to be the manager.`</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>type: 'challenge',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>scenario: {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>data: `&lt;p&gt;You have $100 million to invest. You have two options:&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                           </span>&lt;p class="mt-2"&gt;&lt;strong&gt;Option 1:&lt;/strong&gt; Buy 100% of "Fair Corp", a decent business with average management and a 12% ROE.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                           </span>&lt;p class="mt-2"&gt;&lt;strong&gt;Option 2:&lt;/strong&gt; Buy 10% of "Wonderful Inc.", an exceptional business with brilliant management and a 25% ROE. You can buy this stake at a discount to its intrinsic value.&lt;/p&gt;`</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>question: 'Which investment follows the Buffett philosophy?',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>options: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ text: 'Option 1: Controlling "Fair Corp"', correct: false, feedback: 'Incorrect. While control can seem appealing, you are tying your capital to a mediocre business. Buffett would prefer to partner with excellence.'},</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ text: 'Option 2: A passive stake in "Wonderful Inc."', correct: true, feedback: 'Correct! This is the essence of the SAFECO example. It is far better to have a non-controlling stake in an outstanding business than to control a fair one.'}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>type: 'learn',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>title: `Contrarian Action &amp; Market Prices`,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>quote: `"...pension fund managers invested a record 122% of net funds available in equities - at full prices...In 1974, after the bottom had fallen out, they committed a then record low of 21% to stocks." - 1978 Letter`,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>explanation: `Buffett observes that most investors, even professionals, are driven by herd behavior: they buy enthusiastically when prices are high and sell fearfully when prices are low. The key is to be greedy when others are fearful and fearful when others are greedy.`</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>type: 'challenge',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>scenario: {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>data: `&lt;p&gt;The stock market has crashed 40% over the last year. Media headlines are filled with doom and gloom. Most investors are selling stocks and rushing into cash. You have funds available to invest.&lt;/p&gt;`</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>question: 'What is the most likely action a Buffett-style investor would take?',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>options: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ text: 'Sell remaining stocks to avoid further losses.', correct: false, feedback: 'This is following the herd. Buffett advises acting independently of market sentiment.' },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ text: 'Aggressively look for opportunities to buy small pieces of wonderful businesses at bargain prices.', correct: true, feedback: 'Precisely. A market crash is not a disaster, but an opportunity. It is the time to buy excellent businesses at prices you could not get a year earlier.' }</p>
+<p class="p1"><span class="Apple-converted-space">                </span>]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>]</p>
+<p class="p1"><span class="Apple-converted-space">    </span>},</p>
+<p class="p1"><span class="Apple-converted-space">     </span>{</p>
+<p class="p1"><span class="Apple-converted-space">        </span>level: 3,</p>
+<p class="p1"><span class="Apple-converted-space">        </span>title: "Level 3: The Great Destroyer",</p>
+<p class="p1"><span class="Apple-converted-space">        </span>summary: "You have now confronted the 'great destroyer' of wealth: inflation. You've learned about the 'Investor's Misery Index', the danger of long-term bonds, and why 'turnarounds seldom turn.'",</p>
+<p class="p1"><span class="Apple-converted-space">        </span>concepts: [</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>type: 'learn',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>title: `The "Investor's Misery Index"`,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>quote: `"...a business earning 20% on capital can produce a negative real return for its owners under inflationary conditions not much more severe than presently prevail." - 1979 Letter`,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>explanation: `Inflation acts as a hidden tax on capital. The "misery index" is the combination of inflation and the explicit taxes on dividends and capital gains. If this index is higher than a company's ROE, your purchasing power is shrinking, even if the company is profitable.`</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>type: 'challenge',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>scenario: {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>data: `&lt;p&gt;A company earns a 15% Return on Equity.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                           </span>&lt;p&gt;The inflation rate is 10%.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                           </span>&lt;p&gt;Your personal tax rate on investment gains is 33.3%.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                           </span>&lt;p&gt;Of the 15% nominal gain, you pay 5% in taxes (33.3% of 15). Your after-tax nominal gain is 10%.&lt;/p&gt;`</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>question: 'After accounting for inflation, what is your REAL return in purchasing power?',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>options: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ text: '5% Real Gain', correct: false, feedback: 'Incorrect. Your after-tax nominal gain of 10% is entirely wiped out by the 10% inflation tax.'},</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ text: '0% Real Gain (Break-even)', correct: true, feedback: 'Correct. Your 15% ROE seemed good, but after taxes and the "inflation tax," you have made no real progress. Your purchasing power is exactly where it started.'}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>type: 'learn',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>title: `The Futility of "Turnarounds"`,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>quote: `"...we conclude that 'turnarounds' seldom turn, and that the same energies and talent are much better employed in a good business purchased at a fair price than in a poor business purchased at a bargain price." - 1979 Letter`,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>explanation: `Trying to fix a business with fundamentally bad economics is usually a mistake. It is far more profitable to focus on great businesses that don't need fixing.`</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>type: 'learn',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>title: `The Folly of Long-Term Bonds`,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>quote: `"...they then have turned around, taken the proceeds from the sale of that six-month policy, and sold the money at a fixed price for thirty or forty years." - 1979 Letter`,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>explanation: `Buffett finds it absurd that managers who admit they can't predict costs one year out are willing to lock in a fixed return on money for 30 or 40 years. In an inflationary world, a long-term bond is a terrible, one-sided contract.`</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">             </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>type: 'challenge',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>scenario: {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>data: `&lt;p&gt;You are an insurance company manager. The inflation rate is high and uncertain.&lt;/p&gt;`</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>question: 'Based on Buffett\'s logic, which action is deeply contradictory?',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>options: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ text: 'Raising insurance premium rates to keep up with rising claims costs.', correct: false, feedback: 'This is a rational and necessary action in an inflationary environment.'},</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ text: 'Shortening auto insurance policies from one year to six months, while simultaneously buying 30-year government bonds.', correct: true, feedback: 'Precisely. This is the hypocrisy Buffett points out. You are admitting you can\'t predict the short-term, yet you are making a bet on the very, very long-term.'}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>]</p>
+<p class="p1"><span class="Apple-converted-space">    </span>},</p>
+<p class="p1"><span class="Apple-converted-space">    </span>{</p>
+<p class="p1"><span class="Apple-converted-space">        </span>level: 4,</p>
+<p class="p1"><span class="Apple-converted-space">        </span>title: "Level 4: The Hidden Economic Engine",</p>
+<p class="p1"><span class="Apple-converted-space">        </span>summary: "Congratulations, you are now a Master Analyst! You can see beyond reported earnings to the true economic engine of a company: its 'look-through' earnings from non-controlled holdings. You understand the power of share buybacks and the hidden dangers on insurer balance sheets.",</p>
+<p class="p1"><span class="Apple-converted-space">        </span>concepts: [</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>type: 'learn',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>title: `The Three Tiers of Ownership Accounting`,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>explanation: `Accounting rules treat ownership differently based on the percentage owned:</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;ul class="list-disc list-inside ml-4 mt-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;li&gt;&lt;strong&gt;&gt;50% (Subsidiary):&lt;/strong&gt; All revenues/expenses are fully consolidated.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;li&gt;&lt;strong&gt;20-50% (Investee):&lt;/strong&gt; A single line on the income statement shows the proportional share of the investee's earnings.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;li&gt;&lt;strong&gt;&lt;20% (Investment):&lt;/strong&gt; Only cash dividends received are reported as earnings. The retained earnings are hidden.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/ul&gt;`</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>type: 'learn',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>title: `The "Economic Iceberg": Look-Through Earnings`,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>quote: `"...the part of 'our' earnings that these companies retained last year...exceeded the total reported annual operating earnings of Berkshire Hathaway. Thus, conventional accounting only allows less than half of our earnings 'iceberg' to appear above the surface..." - 1980 Letter`,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>explanation: `The most important part of Berkshire's real earning power comes from the undistributed earnings of the high-quality companies it owns small pieces of (&lt;20%). These "look-through" earnings don't show up in reported results but are of enormous economic value.`</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>type: 'challenge',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>scenario: {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>data: `&lt;p&gt;"HoldCo" reports operating earnings of $50 million for the year.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                           </span>&lt;p&gt;HoldCo also owns 10% of "Wonderful Inc."&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                           </span>&lt;p&gt;Wonderful Inc. earned $800 million this year and paid no dividend.&lt;/p&gt;`</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>question: 'What are HoldCo\'s true "look-through" economic earnings for the year?',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>options: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ text: '$50 Million', correct: false, feedback: 'This is only the reported earnings—the tip of the iceberg. You are missing the huge value created by the non-controlled holding.'},</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ text: '$130 Million', correct: true, feedback: 'Excellent! You calculated the true economic earnings: $50M (reported) + $80M (10% of Wonderful Inc.\'s $800M retained earnings) = $130M.'}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>type: 'learn',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>title: 'The Best Use of Capital: Share Repurchases',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>quote: `"...if a fine business is selling in the market place for far less than intrinsic value, what more certain or more profitable utilization of capital can there be than significant enlargement of the interests of all owners at that bargain price?" - 1980 Letter`,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>explanation: `When a great company's stock is cheap, the smartest thing it can do with its cash is buy back its own shares. This increases every remaining shareholder's ownership stake in the business at an attractive price.`</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">             </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>type: 'learn',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>title: `"Asset Maintenance" Underwriting`,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>explanation: `This is a pernicious problem where an insurer has massive unrealized losses on its bond portfolio. To avoid selling the bonds and booking the loss (which would wipe out its net worth), management is forced to write new insurance business at unprofitable rates, simply to generate cash flow and maintain the size of its asset base. This poisons the well for the entire industry.`</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>type: 'challenge',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>scenario: {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>data: `&lt;p&gt;An insurance company has a huge bond portfolio that is worth 40% less than what they paid for it. If they sold the bonds, the company would be insolvent.&lt;/p&gt;&lt;p&gt;Industry insurance rates are currently too low to be profitable.&lt;/p&gt;`</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>question: 'What is this insurer most likely to do?',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>options: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ text: 'Drastically reduce the amount of insurance it sells until rates improve.', correct: false, feedback: 'This would be the rational underwriting decision, but it would force them to sell their underwater bonds to pay claims, leading to insolvency. They are trapped.'},</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ text: 'Continue selling insurance at unprofitable rates to maintain premium volume.', correct: true, feedback: 'Correct. This is "Asset Maintenance" underwriting. They are accepting underwriting losses to avoid realizing even bigger bond losses. It\'s a dangerous but common practice in a tough market.'}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>]</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1">];</p>
+<p class="p2"><br></p>
+<p class="p1">// --- DOM ELEMENTS ---</p>
+<p class="p1">const startScreen = document.getElementById('start-screen');</p>
+<p class="p1">const gameScreen = document.getElementById('game-screen');</p>
+<p class="p1">const levelCompleteScreen = document.getElementById('level-complete-screen');</p>
+<p class="p2"><br></p>
+<p class="p1">const levelTitle = document.getElementById('level-title');</p>
+<p class="p1">const progressBar = document.getElementById('progress-bar');</p>
+<p class="p1">const contentArea = document.getElementById('content-area');</p>
+<p class="p2"><br></p>
+<p class="p1">const learnSection = document.getElementById('learn-section');</p>
+<p class="p1">const learnTitle = document.getElementById('learn-title');</p>
+<p class="p1">const learnQuote = document.getElementById('learn-quote');</p>
+<p class="p1">const learnExplanation = document.getElementById('learn-explanation');</p>
+<p class="p2"><br></p>
+<p class="p1">const challengeSection = document.getElementById('challenge-section');</p>
+<p class="p1">const scenarioData = document.getElementById('scenario-data');</p>
+<p class="p1">const questionText = document.getElementById('question-text');</p>
+<p class="p1">const optionsContainer = document.getElementById('options-container');</p>
+<p class="p2"><br></p>
+<p class="p1">const feedbackSection = document.getElementById('feedback-section');</p>
+<p class="p1">const feedbackTitle = document.getElementById('feedback-title');</p>
+<p class="p1">const feedbackText = document.getElementById('feedback-text');</p>
+<p class="p2"><br></p>
+<p class="p1">const startGameBtn = document.getElementById('start-game-btn');</p>
+<p class="p1">const nextBtn = document.getElementById('next-btn');</p>
+<p class="p1">const nextLevelBtn = document.getElementById('next-level-btn');</p>
+<p class="p2"><br></p>
+<p class="p1">const levelCompleteTitle = document.getElementById('level-complete-title');</p>
+<p class="p1">const levelCompleteSummary = document.getElementById('level-complete-summary');</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1">// --- GAME STATE ---</p>
+<p class="p1">let currentLevelIndex = 0;</p>
+<p class="p1">let currentConceptIndex = 0;</p>
+<p class="p2"><br></p>
+<p class="p1">// --- GAME LOGIC ---</p>
+<p class="p1">function startGame() {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>startScreen.classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>gameScreen.classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>currentLevelIndex = 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>currentConceptIndex = 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>loadLevel(currentLevelIndex);</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function loadLevel(levelIndex) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const level = gameData[levelIndex];</p>
+<p class="p1"><span class="Apple-converted-space">    </span>levelTitle.textContent = level.title;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>currentConceptIndex = 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>loadConcept(currentConceptIndex);</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function loadConcept(conceptIndex) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>updateProgressBar();</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Reset sections</p>
+<p class="p1"><span class="Apple-converted-space">    </span>learnSection.classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>challengeSection.classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>feedbackSection.classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>nextBtn.classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>contentArea.classList.remove('slide-in');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>void contentArea.offsetWidth; // Trigger reflow</p>
+<p class="p1"><span class="Apple-converted-space">    </span>contentArea.classList.add('slide-in');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const concept = gameData[currentLevelIndex].concepts[conceptIndex];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (concept.type === 'learn') {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>displayLearn(concept);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>} else if (concept.type === 'challenge') {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>displayChallenge(concept);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function updateProgressBar() {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const totalConcepts = gameData[currentLevelIndex].concepts.length;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const progress = ((currentConceptIndex) / totalConcepts) * 100;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>progressBar.style.width = `${progress}%`;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function displayLearn(concept) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>challengeSection.classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>learnSection.classList.remove('hidden');</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>learnTitle.textContent = concept.title;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>learnExplanation.innerHTML = concept.explanation;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (concept.quote) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>learnQuote.innerHTML = `&amp;ldquo;${concept.quote}&amp;rdquo;`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>learnQuote.classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>learnQuote.classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>nextBtn.classList.remove('hidden');</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function displayChallenge(concept) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>learnSection.classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>challengeSection.classList.remove('hidden');</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>scenarioData.innerHTML = concept.scenario.data;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>questionText.textContent = concept.question;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>optionsContainer.innerHTML = '';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>concept.options.forEach(option =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const button = document.createElement('button');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>button.className = 'option-btn w-full p-4 bg-gray-100 border-2 border-gray-200 rounded-lg text-left hover:border-amber-400';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>button.innerHTML = `&lt;p class="font-semibold"&gt;${option.text}&lt;/p&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>button.onclick = () =&gt; checkAnswer(option);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>optionsContainer.appendChild(button);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function checkAnswer(selectedOption) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const buttons = optionsContainer.querySelectorAll('button');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>buttons.forEach(button =&gt; button.disabled = true);</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const concept = gameData[currentLevelIndex].concepts[currentConceptIndex];</p>
+<p class="p1"><span class="Apple-converted-space">    </span>buttons.forEach((button, index) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const option = concept.options[index];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (option.correct) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>button.classList.add('correct');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>} else if (button.textContent === selectedOption.text) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>button.classList.add('incorrect');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>feedbackSection.classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (selectedOption.correct) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>feedbackTitle.textContent = 'Correct Deduction!';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>feedbackTitle.className = 'font-bold text-xl mb-2 text-green-600';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>feedbackTitle.textContent = 'A Misleading Clue...';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>feedbackTitle.className = 'font-bold text-xl mb-2 text-red-500';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>feedbackText.innerHTML = selectedOption.feedback;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>nextBtn.classList.remove('hidden');</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function handleNext() {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>currentConceptIndex++;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const level = gameData[currentLevelIndex];</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (currentConceptIndex &lt; level.concepts.length) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>loadConcept(currentConceptIndex);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>progressBar.style.width = '100%';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>showLevelCompleteScreen();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function showLevelCompleteScreen() {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const level = gameData[currentLevelIndex];</p>
+<p class="p1"><span class="Apple-converted-space">    </span>gameScreen.classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>levelCompleteScreen.classList.remove('hidden');</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>levelCompleteTitle.textContent = `Level ${level.level} Complete!`;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>levelCompleteSummary.textContent = level.summary;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>if(currentLevelIndex &lt; gameData.length - 1) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>nextLevelBtn.textContent = `Proceed to Level ${level.level + 1}`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>nextLevelBtn.disabled = false;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>nextLevelBtn.onclick = () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>currentLevelIndex++;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>levelCompleteScreen.classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gameScreen.classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>loadLevel(currentLevelIndex);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>};</p>
+<p class="p1"><span class="Apple-converted-space">    </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>nextLevelBtn.textContent = 'You have become a Master Analyst!';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>nextLevelBtn.disabled = true;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1">// --- EVENT LISTENERS ---</p>
+<p class="p1">startGameBtn.addEventListener('click', startGame);</p>
+<p class="p1">nextBtn.addEventListener('click', handleNext);</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
