@@ -29,5 +29,6 @@ This transcends traditional educational technology. KRESERA™ addresses the fun
 
 The implications extend beyond individual development. KRESERA™ creates a new paradigm where complex knowledge becomes accessible, engaging, and immediately applicable. We're building learning architectures that make expertise development inevitable rather than exceptional.
 
-**(We are developing the gamified learning framework and interactive content engine. Contact: armorecapital@gmail.com)**
-Start Your Learning Campaign
+**We are developing the gamified learning framework and interactive content engine.**
+
+**Contact: armorecapital@gmail.com)**
